@@ -112,6 +112,33 @@
         <!-- Builtin injector for injecting google analytics code -->
         
 
-    </body>
 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mein Game</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Falls du eine CSS-Datei hast -->
+</head>
+<body>
+    <h1>Willkommen zu meinem Game</h1>
+    <div id="gameContainer">
+        <script type="text/javascript" src="game.js"></script> <!-- Dein GameMaker-Skript -->
+    </div>
+
+    <!-- Token-Check: Füge diesen Code direkt vor `</body>` ein -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+
+            if (!token || atob(token).indexOf("MEIN_GEHEIM_KEY") === -1) {
+                document.body.innerHTML = "<h1>Zugriff verweigert!</h1>";
+            }
+        });
+    </script>
+    </body>
+</body>
+</html>
 </html>
