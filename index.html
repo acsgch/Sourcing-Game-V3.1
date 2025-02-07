@@ -5,15 +5,6 @@
     
 
     <head>
-        <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const erlaubteDomain = "https://andreascorazza9.wixsite.com/sourcing-game/blank"; // Deine Wix-Domain
-
-        if (document.referrer.indexOf(erlaubteDomain) === -1) {
-            document.body.innerHTML = "<h1>Zugriff verweigert</h1>";
-        }
-    });
-</script>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name ="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -123,6 +114,13 @@
 
     </body>
 
-    <!-- Custom PostBody code is injected here -->
-    
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const erlaubteDomain = "https://andreascorazza9.wixsite.com/sourcing-game/blank"; // Deine Wix-Domain
+
+        if (document.referrer.indexOf(erlaubteDomain) === -1) {
+            document.body.innerHTML = "<h1>Zugriff verweigert</h1>";
+        }
+    });
+</script>    
 </html>
