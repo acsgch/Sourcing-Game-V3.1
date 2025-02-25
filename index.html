@@ -2,6 +2,32 @@
 <html lang="en">
 
     <!-- Custom PreHead code is injected here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Page</title>
+    <script>
+        // Function to check if the token is valid
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get("token");
+
+            // Allowed token(s)
+            const allowedTokens = ["your-unique-token-here"];
+
+            // Check if the token is valid
+            if (!allowedTokens.includes(token)) {
+                // Immediately clear everything and show Access Denied
+                document.body.innerHTML = "<h2>Access Denied</h2>";
+                document.body.style.backgroundColor = "#f8d7da";  // Optional: Style the background to indicate denial
+                document.body.style.color = "#721c24";  // Optional: Error message color
+                return;  // Stop all further loading
+            }
+        };
+    </script>
+</head>
 
 
 
