@@ -2,27 +2,7 @@
 <html lang="en">
 
     <!-- Custom PreHead code is injected here -->
-// Get the token from the URL
-const urlParams = new URLSearchParams(window.location.search);
-const token = urlParams.get("token");
 
-// Allowed token(s)
-const allowedTokens = ["1234"];
-
-// Check if the token is valid
-if (!allowedTokens.includes(token)) {
-    // Stop further rendering of the page
-    document.body.innerHTML = "<h2>Access Denied</h2>";
-
-    // Optionally, stop scripts from running
-    const scripts = document.getElementsByTagName('script');
-    for (let i = 0; i < scripts.length; i++) {
-        scripts[i].type = 'javascript/blocked'; // Disable script execution
-    }
-
-    // Prevent page from loading further
-    return;  // Stop execution here
-}
 
 
     <head>
@@ -132,6 +112,24 @@ if (!allowedTokens.includes(token)) {
 
         <!-- Builtin injector for injecting google analytics code -->
         
+
+    <!-- Your page content goes here -->
+
+    <script>
+        // Your token validation code here
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get("token");
+
+        // Allowed token(s)
+        const allowedTokens = ["1234"];
+
+        // Check if the token is valid
+        if (!allowedTokens.includes(token)) {
+            // Block further content rendering and display "Access Denied"
+            document.body.innerHTML = "<h2>Access Denied</h2>";
+            return;  // Stop further code execution
+        }
+    </script>
 
 </body>
 </html>
