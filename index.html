@@ -2,7 +2,18 @@
 <html lang="en">
 
     <!-- Custom PreHead code is injected here -->
-    
+    // Get the token from the URL
+const urlParams = new URLSearchParams(window.location.search);
+const token = urlParams.get("token");
+
+// Allowed token(s)
+const allowedTokens = ["mysecuretoken123"];
+
+// Verify token before displaying content
+if (!allowedTokens.includes(token)) {
+    document.body.innerHTML = "<h2>Access Denied</h2>";
+}
+
 
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
