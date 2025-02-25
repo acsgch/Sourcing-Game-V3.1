@@ -1,161 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- Custom PreHead code is injected here -->
-<!DOCTYPE html>
-<html lang="en">
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Page</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta http-equiv="pragma" content="no-cache" />
+
+    <!-- Title of the Page -->
+    <title>Created with GameMaker</title>
+
+    <!-- Token Validation Script (Placed in head to run early) -->
     <script>
-        // Function to check if the token is valid
         window.onload = function() {
+            // Get token from URL
             const urlParams = new URLSearchParams(window.location.search);
             const token = urlParams.get("token");
 
             // Allowed token(s)
-            const allowedTokens = ["1234"];
+            const allowedTokens = ["your-unique-token-here"];
 
-            // Check if the token is valid
+            // If the token is not valid, show "Access Denied"
             if (!allowedTokens.includes(token)) {
-                // Immediately clear everything and show Access Denied
                 document.body.innerHTML = "<h2>Access Denied</h2>";
                 document.body.style.backgroundColor = "#f8d7da";  // Optional: Style the background to indicate denial
                 document.body.style.color = "#721c24";  // Optional: Error message color
-                return;  // Stop all further loading
+                return;  // Stop further content from loading
             }
         };
     </script>
 
-
-    <meta charset="UTF-8">
-    <title>Your GitHub Page</title>
-    <script>
-        // Your token validation code here
-        const urlParams = new URLSearchParams(window.location.search);
-        const token = urlParams.get("token");
-
-        // Allowed token(s)
-        const allowedTokens = ["your-unique-token-here"];
-
-        // Check if the token is valid
-        if (!allowedTokens.includes(token)) {
-            // Block further content rendering and display "Access Denied"
-            document.body.innerHTML = "<h2>Access Denied</h2>";
-            return;  // Stop further code execution
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background: #0;
+            color: #cccccc;
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
         }
-    </script>
-        
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name ="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta charset="utf-8"/>
 
-        <!-- Builtin injector for disabling cache -->
-        <meta http-equiv="pragma" content="no-cache"/>
+        canvas {
+            image-rendering: optimizeSpeed;
+            -webkit-interpolation-mode: nearest-neighbor;
+            -ms-touch-action: none;
+            touch-action: none;
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+        }
 
-        <!-- Set the title bar of the page -->
-        <title>Created with GameMaker</title>
+        :-webkit-full-screen #canvas {
+            width: 100%;
+            height: 100%;
+        }
 
-        <!-- Custom PreStyle code is injected here -->
-        
+        :-webkit-full-screen {
+            width: 100%;
+            height: 100%;
+        }
 
-        <!-- Set the background colour of the document -->
-        <style>
-            body {
-                background: #0;
-                color: #cccccc;
-                margin: 0px;
-                padding: 0px;
-                border: 0px;
-            }
+        /* Custom Runner Styles */
+        div.gm4html5_div_class {
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+        }
+        div.gm4html5_login {
+            padding: 20px;
+            position: absolute;
+            border: solid 2px #000000;
+            background-color: #404040;
+            color:#00ff00;
+            border-radius: 15px;
+            box-shadow: #101010 20px 20px 40px;
+        }
+        div.gm4html5_cancel_button {
+            float: right;
+        }
+        div.gm4html5_login_button {
+            float: left;
+        }
+        div.gm4html5_login_header {
+            text-align: center;
+        }
+        /* END - Custom Runner Styles */
+    </style>
+</head>
 
-            canvas {
-                image-rendering: optimizeSpeed;
-                -webkit-interpolation-mode: nearest-neighbor;
-                -ms-touch-action: none;
-                touch-action: none;
-                margin: 0px;
-                padding: 0px;
-                border: 0px;
-            }
-            :-webkit-full-screen #canvas {
-                width: 100%;
-                height: 100%;
-            }
-            :-webkit-full-screen {
-                width: 100%;
-                height: 100%;
-            }
-            
-            /* Custom Runner Styles */
-            div.gm4html5_div_class {
-                margin: 0px;
-                padding: 0px;
-                border: 0px;
-            }
-            div.gm4html5_login {
-                padding: 20px;
-                position: absolute;
-                border: solid 2px #000000;
-                background-color: #404040;
-                color:#00ff00;
-                border-radius: 15px;
-                box-shadow: #101010 20px 20px 40px;
-            }
-            div.gm4html5_cancel_button {
-                float: right;
-            }
-            div.gm4html5_login_button {
-                float: left;
-            }
-            div.gm4html5_login_header {
-                text-align: center;
-            }
-            /* END - Custom Runner Styles */
-            
-        </style>
+<body>
+    <div class="gm4html5_div_class" id="gm4html5_div_id">
+        <!-- Create the canvas element the game draws to -->
+        <canvas id="canvas" width="1920" height="1080">
+            <p>Your browser doesn't support HTML5 canvas.</p>
+        </canvas>
+    </div>
 
-        <!-- Custom PostStyle code is injected here -->
-        
+    <!-- Run the game code -->
+    <script type="text/javascript" src="html5game/Sourcing Game 4.8.js?cachebust=459740021"></script>
 
-        <!-- Builtin injector for injecting flurry analytics code -->
-        
-    </head>
-
-    <!-- Custom PostHead code is injected here -->
-    
-
-    <!-- Custom PreBody code is injected here -->
-    
-
-    <body>
-        <div class="gm4html5_div_class" id="gm4html5_div_id">
-            
-            <!-- Builtin injector for splash screen -->
-            
-
-            <!-- Create the canvas element the game draws to -->
-            <canvas id="canvas" width="1920" height="1080" >
-                <p>Your browser doesn't support HTML5 canvas.</p>
-            </canvas>
-        </div>
-
-        <!-- Run the game code -->
-        <script type="text/javascript" src="html5game/Sourcing Game 4.8.js?cachebust=459740021"></script>
-
-        <!-- Builtin injector for injecting runner path -->
-        
-
-        <script>window.onload = GameMaker_Init;</script>
-
-        <!-- Builtin injector for injecting google analytics code -->
-        
-
-    <!-- Your page content goes here -->
-
+    <!-- Initialize GameMaker -->
+    <script>window.onload = GameMaker_Init;</script>
 </body>
-</html>
+
 </html>
